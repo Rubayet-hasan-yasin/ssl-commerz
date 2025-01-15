@@ -5,11 +5,17 @@ const Checkout = () => {
     const handleCreatePayment= () => {
         axios.post('http://localhost:3000/create-payment', {
 
-            amount: 10000,
-            currency: "USD",
+            amount: 100,
+            currency: "BDT",
         })
         .then((res)=>{
             console.log(res);
+
+            const redirectUrl = res.data.peymentUrl;
+
+            if(redirectUrl){
+                window.location.replace(redirectUrl)
+            }
             
         })
     }
